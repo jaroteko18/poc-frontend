@@ -1,0 +1,12 @@
+deploy:k8s:
+  stage: deploy
+  only:
+  - /\.deploy$/
+  image: registry.kanosolution.net/kano/devops/kubectl/kubeaws:latest
+  script:
+    - export AWS_ACCESS_KEY_ID=${DEV_AWS_ACCESS_KEY_ID}
+    - export AWS_SECRET_ACCESS_KEY=${DEV_AWS_SECRET_ACCESS_KEY}
+    - env
+    - aws eks --region ap-southeast-1 update-kubeconfig --name eks-dev
+    - kubectl apply -n dev-afiatan -f $V_DEVOPS_K8S
+    - kubectl rollout restart deploy web-app -n dev-afiatan

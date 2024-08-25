@@ -1,1 +1,1 @@
-# poc-frontend
+# BSSN2024 web
