@@ -33,15 +33,63 @@ const data = reactive({
 const axios = inject('axios');
 const router = useRouter();
 
-function goto(token, userID, path) {
-  if (auth.appToken=="") {
-    auth.set({
-      appToken: token,
-      appData: {
-        userID: userID
-      }
+async function doLogin(role){
+    var email = role+'@'+role+'.com'
+    axios.post('/api/login', {
+      email: email,
+      password: '12345678'
+    })
+    .then(function (r) {
+      auth.set({
+        appToken: r.data.access_token,
+        appData: {
+          userID: role,
+          DisplayName:role,
+          TenantName:''
+        }
+      });
+    })
+    .catch(function (e) {
+      console.log(e);
     });
-  };
+    
+    // const fd = new FormData();
+    // fd.append('email', role+'@'+role+'.com');
+    // fd.append('password', '12345678');
+    // await axios.post({
+    //   method: "post",
+    //   url: "/api/login",
+    //   data: fd,
+    //   headers: {
+    //     'Content-Type': `multipart/form-data; boundary=${form._boundary}`,
+    // },
+    // }).then(function (r) {
+    //   //handle success
+    //   console.log(r);
+    // })
+    // .catch(function (r) {
+    //   //handle error
+    //   console.log(r);
+    // });
+
+    // auth.set({
+    //   appToken: token,
+    //   appData: {
+    //     userID: userID
+    //   }
+    // });
+    
+}
+async function goto(token, userID, path) {
+  await doLogin(token)
+  // if (auth.appToken=="") {
+  //   auth.set({
+  //     appToken: token,
+  //     appData: {
+  //       userID: userID
+  //     }
+  //   });
+  // };
 
   if (path!='') router.push(path);
 }

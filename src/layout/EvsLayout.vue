@@ -15,9 +15,9 @@
     </div>
     <div class="grow h-full flex" v-if="auth.appToken != ''">
       <div class="flex flex-col pl-2">
-        <div class="pt-2">{{ auth.appData.DisplayName }}</div>
+        <div class="pt-2">{{ auth.appData?.DisplayName }}</div>
         <div class="text-[10px] text-slate-300">
-          {{ auth.appData.TenantName }}
+          {{ auth.appData?.TenantName }}
         </div>
       </div>
     </div>
