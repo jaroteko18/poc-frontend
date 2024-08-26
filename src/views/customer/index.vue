@@ -1,22 +1,22 @@
 <template>
     <div class="w-full">
         <data-list class="card" ref="listControl" title="Customer"
-        grid-hide-select
-        grid-config="/api/customerform/gridconfig" 
-        form-config="/api/customerform/formconfig" 
-        grid-read="/api/customerform/gets"
-        form-read="/api/customerform/get" 
-        grid-mode="grid" 
-        grid-delete="/api/customerform/delete" 
-        form-keep-label
-        form-insert="/api/customerform/insert" 
-        form-update="/api/customerform/update" 
-        :grid-fields="['Enable']"
-        :init-app-mode="data.appMode" 
-        :init-form-mode="data.formMode" 
-        @formNewData="newRecord" 
-        @formEditData="openForm">
-      </data-list>
+            grid-hide-select
+            grid-config="/api/customerform/gridconfig" 
+            form-config="/api/customerform/formconfig" 
+            grid-read="/api/customerform/gets"
+            form-read="/api/customerform/get" 
+            grid-mode="grid" 
+            grid-delete="/api/customerform/delete" 
+            form-keep-label
+            form-insert="/api/customerform/insert" 
+            form-update="/api/customerform/update" 
+            :grid-fields="['Enable']"
+            :init-app-mode="data.appMode" 
+            :init-form-mode="data.formMode" 
+            @formNewData="newRecord" 
+            @formEditData="openForm">
+        </data-list>
     </div>
 </template>
 

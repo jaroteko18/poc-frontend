@@ -13,15 +13,15 @@
     >
       <h1 class="cursor-pointer text-[1em]">POC</h1>
     </div>
-    <div class="grow h-full flex" v-if="auth.appToken != ''">
+    <!-- <div class="grow h-full flex" v-if="auth.appToken != ''">
       <div class="flex flex-col pl-2">
         <div class="pt-2">{{ auth.appData?.DisplayName }}</div>
         <div class="text-[10px] text-slate-300">
           {{ auth.appData?.TenantName }}
         </div>
       </div>
-    </div>
-    <div v-else class="grow h-full flex flex-col px-2 bg-primary">&nbsp;</div>
+    </div> -->
+    <div class="grow h-full flex flex-col px-2 bg-primary">&nbsp;</div>
     <div class="mr-3">
       <UserContextMenu />
     </div>
