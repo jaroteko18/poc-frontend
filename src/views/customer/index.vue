@@ -1,22 +1,26 @@
 <template>
     <div class="w-full">
         <data-list class="card" ref="listControl" title="Customer"
-        grid-hide-select
-        grid-config="/api/customerform/gridconfig" 
-        form-config="/api/customerform/formconfig" 
-        grid-read="/api/customerform/gets"
-        form-read="/api/customerform/get" 
-        grid-mode="grid" 
-        grid-delete="/api/customerform/delete" 
-        form-keep-label
-        form-insert="/api/customerform/insert" 
-        form-update="/api/customerform/update" 
-        :grid-fields="['Enable']"
-        :init-app-mode="data.appMode" 
-        :init-form-mode="data.formMode" 
-        @formNewData="newRecord" 
-        @formEditData="openForm">
-      </data-list>
+            grid-hide-select
+            grid-config="/api/customerform/gridconfig" 
+            form-config="/api/customerform/formconfig" 
+            grid-read="/api/customerform/gets"
+            form-read="/api/customerform/get" 
+            grid-mode="grid" 
+            grid-delete="/api/customerform/delete" 
+            form-keep-label
+            form-insert="/api/customerform/insert" 
+            form-update="/api/customerform/update" 
+            :grid-fields="['dob']"
+            :init-app-mode="data.appMode" 
+            :init-form-mode="data.formMode" 
+            @formNewData="newRecord" 
+            @formEditData="openForm">
+
+            <template #grid_dob="{item}">
+                {{ moment(item.dob).isValid() ? moment(item.dob).format('YYYY-MM-DD').toString() : item.dob }}
+            </template>
+        </data-list>
     </div>
 </template>
 
@@ -25,6 +29,7 @@ import { layoutStore } from '@/stores/layout';
 import { authStore } from '@/stores/auth';
 import { reactive, ref, onMounted, inject } from "vue";
 import { DataList, util } from "suimjs";
+import moment from 'moment'
   
 const layout = layoutStore();
 const auth = authStore();
