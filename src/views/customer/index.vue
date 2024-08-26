@@ -12,7 +12,6 @@
             form-insert="/api/customerform/insert" 
             form-update="/api/customerform/update" 
             :grid-fields="['dob']"
-            :form-fields="['dob']"
             :init-app-mode="data.appMode" 
             :init-form-mode="data.formMode" 
             @formNewData="newRecord" 
@@ -20,16 +19,6 @@
         >
             <template #grid_dob="{item}">
                 {{ moment(item.dob).isValid() ? moment(item.dob).format('YYYY-MM-DD').toString() : item.dob }}
-            </template>
-
-            <template #form_input_dob="{item}"> 
-                <s-input
-                    kind="date"
-                    label="Date of birth"
-                    keep-label
-                    class="w-full"
-                    v-model="item.dob"
-                ></s-input>
             </template>
         </data-list>
     </div>
