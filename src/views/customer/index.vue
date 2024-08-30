@@ -2,15 +2,15 @@
     <div class="w-full">
         <data-list class="card" ref="listControl" title="Customer"
             grid-hide-select
-            grid-config="/api/customerform/gridconfig" 
-            form-config="/api/customerform/formconfig" 
-            grid-read="/api/customerform/gets"
-            form-read="/api/customerform/get" 
+            grid-config="/api/customer/v1/gridconfig" 
+            form-config="/api/customer/v1/formconfig" 
+            grid-read="/api/customer/v1/gets"
+            form-read="/api/customer/v1/get" 
             grid-mode="grid" 
-            grid-delete="/api/customerform/delete" 
+            grid-delete="/api/customer/v1/delete" 
             form-keep-label
-            form-insert="/api/customerform/insert" 
-            form-update="/api/customerform/update" 
+            form-insert="/api/customer/v1/insert" 
+            form-update="/api/customer/v1/update" 
             :grid-fields="['dob']"
             :init-app-mode="data.appMode" 
             :init-form-mode="data.formMode" 
