@@ -15,8 +15,8 @@
             :init-app-mode="data.appMode" 
             :init-form-mode="data.formMode" 
             @formNewData="newRecord" 
-            @formEditData="openForm">
-
+            @formEditData="openForm"
+        >
             <template #grid_dob="{item}">
                 {{ moment(item.dob).isValid() ? moment(item.dob).format('YYYY-MM-DD').toString() : item.dob }}
             </template>
@@ -28,7 +28,7 @@
 import { layoutStore } from '@/stores/layout';
 import { authStore } from '@/stores/auth';
 import { reactive, ref, onMounted, inject } from "vue";
-import { DataList, util } from "suimjs";
+import { DataList, util, SInput } from "suimjs";
 import moment from 'moment'
   
 const layout = layoutStore();
